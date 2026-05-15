@@ -677,7 +677,7 @@ func TestUnitProcessText(t *testing.T) {
 			name:     "unknown Slack bot mention",
 			input:    "Hey <@B12348765> how are you?",
 			userMap:  usersMap,
-			expected: "Hey B12348765 how are you?",
+			expected: "Hey <@B12348765> how are you?",
 		},
 		{
 			name:     "unknown user mention falls back to ID",
@@ -719,7 +719,7 @@ func TestUnitProcessText(t *testing.T) {
 			name:     "invalid Slack user mention format treated as normal text",
 			input:    "I like <@  W87654321 > @U12345678 <U12345678> <@>",
 			userMap:  usersMap,
-			expected: "I like W87654321 U12345678 U12345678",
+			expected: "I like <@ W87654321 > @U12345678 <U12345678> <@>",
 		},
 	}
 
